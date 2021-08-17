@@ -4,10 +4,10 @@ namespace mvc\Models;
 
 use mvc\Core\Model;
 
-class TaskModel extends Model
+class BookModel extends Model
 {
     protected $id;
-    protected $title;
+    protected $name;
     protected $description;
 
     public function getId()
@@ -20,14 +20,14 @@ class TaskModel extends Model
         $this->id = $id;
     }
 
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
     }
 
     public function getDescription()

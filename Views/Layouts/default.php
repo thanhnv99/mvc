@@ -33,7 +33,10 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/mvc/tasks/index">Task<span class="sr-only">(current)</span></a>
-            </li>          
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/mvc/books/index">Book<span class="sr-only">(current)</span></a>
+            </li>
         </ul>
     </div>
 </nav>

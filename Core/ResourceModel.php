@@ -93,6 +93,6 @@ class ResourceModel implements ResourceModelInterface
         $req = Database::getBdd()->prepare($sql);
         $req->execute();
         //Trả về mảng chứa các Obj đã lấy được.
-        return $req->fetchAll(PDO::FETCH_OBJ);
+        return $req->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, get_class($this->model));
     }
 }
