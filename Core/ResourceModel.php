@@ -21,8 +21,7 @@ class ResourceModel implements ResourceModelInterface
 
     public function save($model)
     {
-        //get model data hàm getProperties sẽ trả về một mảng các thuộc stinhs của Model
-        // array{ ["id"]=> 1 , ["title"]=>"task một",["description"]=>"abcd" }
+        //để chuyển đổi object sang mảng key-value
         $properties = $model->getProperties();
 
         //get model id
@@ -33,7 +32,7 @@ class ResourceModel implements ResourceModelInterface
         // Nếu ID = null nghĩa là người dùng dùng chức năng thêm 
         if ($checkID == null) {
             //xóa id khỏi mảng properties
-            unset($properties['id']);
+            unset($properties->this->id);
 
             //nối các phần tử mảng bằng dấu , 
             $values = implode(', ', array_keys($properties));
@@ -62,7 +61,7 @@ class ResourceModel implements ResourceModelInterface
                 }
             }
             $column = implode(', ', $columns);
-            $sql = "UPDATE {$this->table} SET " . $column . " WHERE id = :id";
+            $sql = "UPDATE {$this->table} SET " . $column . " WHERE {$this->id} = :id";
             $req = Database::getBdd()->prepare($sql);
             return $req->execute($properties);
         }
@@ -70,8 +69,7 @@ class ResourceModel implements ResourceModelInterface
 
     public function delete($id)
     {
-        
-        $sql = "DELETE FROM {$this->table} where id =:id";
+        $sql = "DELETE FROM {$this->table} where {$this->id} =:id";
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([':id' => $id]);
     }
@@ -79,7 +77,7 @@ class ResourceModel implements ResourceModelInterface
     public function get($id)
     {
         //Tạo câu truy vấn sql lấy tất cả thoogn tin từ bảng và id 
-        $sql = "SELECT * FROM {$this->table} where id =:id";
+        $sql = "SELECT * FROM {$this->table} where {$this->id} =:id";
         $req = Database::getBdd()->prepare($sql);
         $req->execute([':id' => $id]);
         // Trả về Obj lấy được

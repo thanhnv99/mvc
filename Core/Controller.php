@@ -9,6 +9,7 @@ class Controller
 
     function set($d)
     {
+        //noi mang d vao mang vars[]
         $this->vars = array_merge($this->vars, $d);
     }
 

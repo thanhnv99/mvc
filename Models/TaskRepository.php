@@ -2,6 +2,7 @@
 
 namespace mvc\Models;
 
+use mvc\Core\Model;
 use mvc\Models\TaskResourceModel;
 
 class TaskRepository
@@ -24,11 +25,11 @@ class TaskRepository
         return $this->taskRes->delete($id);
     }
 
-    public function add($model){
+    public function add(TaskModel $model){
         return $this->taskRes->save($model);
     }
 
-    public function update($model){
+    public function update(TaskModel $model){
         return $this->taskRes->save($model);
     }
 }
